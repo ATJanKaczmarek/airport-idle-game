@@ -30,47 +30,34 @@ public class UIManager : MonoBehaviour
 
     private string CalculateMoneyShortcut(decimal _money)
     {
-
-        if (_roundedMoney < 1000)
+        if (_money < 1000)
         {
             return "Money: " + _money;
         }
         else if (_money < 1000000)
         {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000, 2) + "K";
+            return "Money: " + System.Math.Round(_money / 1000, 2) + "K";
         }
         else if (_money < 1000000000)
         {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000, 2) + "Mio";
+            return "Money: " + System.Math.Round(_money / 1000000, 2) + "Mio";
         }
         else if (_money < 1000000000000)
         {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000, 2) + "Mrd";
+            return "Money: " + System.Math.Round(_money / 1000000000, 2) + "Mrd";
         }
         else if (_money < 1000000000000000)
         {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000, 2) + "B";
+            return "Money: " + System.Math.Round(_money / 1000000000000, 2) + "B";
         }
         else if (_money < 1000000000000000000)
         {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000, 2) + "Brd";
-        }
-        else if (_money < 1000000000000000000000)
-        {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000, 2) + "Tri";
-        }
-        else if (_money < 1000000000000000000000000)
-        {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000000, 2) + "Trd";
-        }
-        else if (_money < 1000000000000000000000000000)
-        {
-            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000000000, 2) + "Qui";
+            return "Money: " + System.Math.Round(_money / 1000000000000000, 2) + "Brd";
         }
         else
         {
             Debug.Log("Max Money");
+            return "Max";
         }
     }
-
 }

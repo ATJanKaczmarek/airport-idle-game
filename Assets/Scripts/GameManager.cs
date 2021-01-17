@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void AddMoneyButton()
     {
-        coins += 10000;
+        coins += 100000000000000;
         UIManager.Instance.UpdateMoney(coins);
     }
 }

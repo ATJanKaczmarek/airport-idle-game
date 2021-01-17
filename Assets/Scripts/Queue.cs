@@ -49,6 +49,9 @@ public class Queue : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Float: " + float.MaxValue);
+        Debug.Log("Dec: " + decimal.MaxValue);
+
         StartCoroutine(SpawnTimer());
         _timer.SetActive(false);
      
