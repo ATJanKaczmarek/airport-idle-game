@@ -23,28 +23,29 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text money_txt;
 
-    public void UpdateMoney(float _money)
+    public void UpdateMoney(decimal _money)
     {
         money_txt.text = CalculateMoneyShortcut(_money);
     }
 
-    private string CalculateMoneyShortcut(float _money)
+    private string CalculateMoneyShortcut(decimal _money)
     {
-        if (_money < 1000f)
+        decimal _roundedMoney = System.Math.Round(_money, 2);
+        if (_roundedMoney < 1000)
         {
-            return "Money: " + _money;
+            return "Money: " + _roundedMoney;
         } 
-        else if (_money < 1000000)
+        else if (_roundedMoney < 1000000)
         {
-            return "Money: " + _money / 1000 + "K";
+            return "Money: " + _roundedMoney / 1000 + "K";
+        }
+        else if (_roundedMoney < 1000000000)
+        {
+            return "Money: " + _roundedMoney / 1000000 + "M";
         }
         else
         {
-            return "Money: " + _money:;
-        }
-        else if (_money < 1000000000)
-        {
-            return "Money: " + _money / 1000000 + "M";
+            return "Money: " + _roundedMoney;
         }
     }
 }
