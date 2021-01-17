@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public static float coins = 1000000.00f;
+    public static float coins = 10000;
 
     public void GainMoney(Constants.FlightLevel _level, Constants.FlightClass _class)
     {

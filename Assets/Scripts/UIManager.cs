@@ -25,6 +25,22 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMoney(float _money)
     {
-        money_txt.text = "Money: " + _money;
+        money_txt.text = CalculateMoneyShortcut(_money);
+    }
+
+    private string CalculateMoneyShortcut(float _money)
+    {
+        if (_money < 1000f)
+        {
+            return "Money: " + _money;
+        } 
+        else if (_money < 1000000)
+        {
+            return "Money: " + _money / 1000 + "K";
+        }
+        else
+        {
+            return "";
+        }
     }
 }
