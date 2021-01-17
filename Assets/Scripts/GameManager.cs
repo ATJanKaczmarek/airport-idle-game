@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public static decimal coins = 10000;
+    public static float coins = 10000;
 
     public void GainMoney(Constants.FlightLevel _level, Constants.FlightClass _class)
     {
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        coins += (decimal)price * (decimal)multiplier;
+        coins += price * multiplier;
         UIManager.Instance.UpdateMoney(coins);
     }
 

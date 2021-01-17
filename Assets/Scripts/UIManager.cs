@@ -23,12 +23,12 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text money_txt;
 
-    public void UpdateMoney(decimal _money)
+    public void UpdateMoney(float _money)
     {
         money_txt.text = CalculateMoneyShortcut(_money);
     }
 
-    private string CalculateMoneyShortcut(decimal _money)
+    private string CalculateMoneyShortcut(float _money)
     {
         if (_money < 1000)
         {

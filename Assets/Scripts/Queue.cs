@@ -24,9 +24,9 @@ public class Queue : MonoBehaviour
     public int _queueLength = 1;
     private int _lengthOwned = 1;
 
-    private decimal _nextLengthUpgradePrice;
-    private decimal _nextWaitingTimeUpgradePrice;
-    private decimal _nextSpawnrateUpgradePrice;
+    private float _nextLengthUpgradePrice;
+    private float _nextWaitingTimeUpgradePrice;
+    private float _nextSpawnrateUpgradePrice;
 
     private int _waitingTimeUpgradesOwned = 0;
     private int _spawnrateUpgradesOwned = 0;
@@ -71,9 +71,9 @@ public class Queue : MonoBehaviour
 
     private void Update()
     {
-        _nextLengthUpgradePrice = System.Math.Round((decimal)Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * (decimal)Mathf.Pow(Constants.MULTIPLIER, _lengthOwned), 2);
-        _nextWaitingTimeUpgradePrice = System.Math.Round((decimal)Constants.QUEUE_TIME_UPGRADE_BASE_COST * (decimal)Mathf.Pow(Constants.MULTIPLIER, _waitingTimeUpgradesOwned), 2);
-        _nextSpawnrateUpgradePrice = System.Math.Round((decimal)Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * (decimal)Mathf.Pow(Constants.MULTIPLIER, _spawnrateUpgradesOwned), 2);
+        _nextLengthUpgradePrice = (float)System.Math.Round(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _lengthOwned), 2);
+        _nextWaitingTimeUpgradePrice = (float)System.Math.Round(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _waitingTimeUpgradesOwned), 2);
+        _nextSpawnrateUpgradePrice = (float)System.Math.Round(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _spawnrateUpgradesOwned), 2);
         if(IsHandlingPerson() == true && HP_running == false)
         {
             StartCoroutine(HandlePerson());
