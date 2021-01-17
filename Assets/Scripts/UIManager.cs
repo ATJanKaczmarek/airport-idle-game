@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         } 
         else if (_roundedMoney < 1000000)
         {
-            return "Money: " + _roundedMoney / 1000 + "K";
+            return "Money: " + System.Math.Round(_roundedMoney / 1000, 2) + "K";
         }
         else if (_roundedMoney < 1000000000)
         {
