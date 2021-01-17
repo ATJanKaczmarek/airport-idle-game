@@ -76,8 +76,6 @@ public class Queue : MonoBehaviour
     }
     #endregion
 
-    // Spawn -> wenn Person auf [0] -> HandlePerson() -> -> -> +$
-
     #region Handling persons
     private IEnumerator SpawnTimer()
     {
