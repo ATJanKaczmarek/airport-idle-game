@@ -40,7 +40,11 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            return "";
+            return "Money: " + _money:;
+        }
+        else if (_money < 1000000000)
+        {
+            return "Money: " + _money / 1000000 + "M";
         }
     }
 }
