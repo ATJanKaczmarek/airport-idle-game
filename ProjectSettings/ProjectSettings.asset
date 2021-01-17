@@ -3,13 +3,8 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
-  serializedVersion: 20
-  productGUID: 2b0d44db0ccc88049886719fdb0793fc
-=======
   serializedVersion: 22
-  productGUID: fc6a9a41c68bc9440817b4c0df2ec995
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
+  productGUID: d89249cc7d797e74696b0997b2da0a7a
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -47,13 +42,8 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
-<<<<<<< HEAD
-  defaultScreenWidth: 1024
-  defaultScreenHeight: 768
-=======
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
@@ -129,10 +119,7 @@ PlayerSettings:
   stadiaTargetFramerate: 0
   vulkanNumSwapchainBuffers: 3
   vulkanEnableSetSRGBWrite: 0
-<<<<<<< HEAD
-=======
   vulkanEnablePreTransform: 0
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   vulkanEnableLateAcquireNextImage: 0
   m_SupportedAspectRatios:
     4:3: 1
@@ -148,34 +135,6 @@ PlayerSettings:
   xboxOneDisableKinectGpuReservation: 1
   xboxOneEnable7thCore: 1
   vrSettings:
-<<<<<<< HEAD
-    cardboard:
-      depthFormat: 0
-      enableTransitionView: 0
-    daydream:
-      depthFormat: 0
-      useSustainedPerformanceMode: 0
-      enableVideoLayer: 0
-      useProtectedVideoMemory: 0
-      minimumSupportedHeadTracking: 0
-      maximumSupportedHeadTracking: 1
-    hololens:
-      depthFormat: 1
-      depthBufferSharingEnabled: 1
-    lumin:
-      depthFormat: 0
-      frameTiming: 2
-      enableGLCache: 0
-      glCacheMaxBlobSize: 524288
-      glCacheMaxFileSize: 8388608
-    oculus:
-      sharedDepthBuffer: 1
-      dashSupport: 1
-      lowOverheadMode: 0
-      protectedContext: 0
-      v2Signing: 1
-=======
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
@@ -188,10 +147,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier: {}
   buildNumber: {}
-<<<<<<< HEAD
-=======
   overrideDefaultApplicationIdentifier: 0
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
@@ -245,13 +201,8 @@ PlayerSettings:
   iOSLaunchScreeniPadFillPct: 100
   iOSLaunchScreeniPadSize: 100
   iOSLaunchScreeniPadCustomXibPath: 
-<<<<<<< HEAD
-  iOSUseLaunchScreenStoryboard: 0
-  iOSLaunchScreenCustomStoryboardPath: 
-=======
   iOSLaunchScreenCustomStoryboardPath: 
   iOSLaunchScreeniPadCustomStoryboardPath: 
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   iOSDeviceRequirements: []
   iOSURLSchemes: []
   iOSBackgroundModes: 0
@@ -269,11 +220,6 @@ PlayerSettings:
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
-<<<<<<< HEAD
-  clonedFromGUID: 00000000000000000000000000000000
-  templatePackageId: 
-  templateDefaultScene: 
-=======
   shaderPrecisionModel: 0
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
@@ -285,7 +231,6 @@ PlayerSettings:
   useCustomBaseGradleTemplate: 0
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -325,10 +270,7 @@ PlayerSettings:
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality: []
   m_BuildTargetGroupLightmapSettings: []
-<<<<<<< HEAD
-=======
   m_BuildTargetNormalMapEncoding: []
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -470,10 +412,7 @@ PlayerSettings:
   switchSocketInitializeEnabled: 1
   switchNetworkInterfaceManagerInitializeEnabled: 1
   switchPlayerConnectionEnabled: 1
-<<<<<<< HEAD
-=======
   switchUseNewStyleFilepaths: 0
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   ps4NPAgeRating: 12
   ps4NPTitleSecret: 
   ps4NPTrophyPackPath: 
@@ -569,10 +508,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols: {}
-<<<<<<< HEAD
-=======
   additionalCompilerArguments: {}
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -581,11 +517,8 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-<<<<<<< HEAD
-=======
   useReferenceAssemblies: 1
   enableRoslynAnalyzers: 1
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
@@ -645,14 +578,7 @@ PlayerSettings:
   XboxOneXTitleMemory: 8
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
-<<<<<<< HEAD
-  vrEditorSettings:
-    daydream:
-      daydreamIconForeground: {fileID: 0}
-      daydreamIconBackground: {fileID: 0}
-=======
   vrEditorSettings: {}
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   cloudServicesEnabled: {}
   luminIcon:
     m_Name: 
@@ -666,15 +592,6 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-<<<<<<< HEAD
-  cloudProjectId: 
-  framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
-  cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 0
-  disableOldInputManagerSupport: 0
-=======
   activeInputHandler: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
@@ -682,6 +599,5 @@ PlayerSettings:
   projectName: 
   organizationId: 
   cloudEnabled: 0
->>>>>>> b94f10905fe05d2279f24d044ee7862c03287236
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
