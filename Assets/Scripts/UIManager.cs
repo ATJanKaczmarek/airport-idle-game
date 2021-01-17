@@ -30,22 +30,47 @@ public class UIManager : MonoBehaviour
 
     private string CalculateMoneyShortcut(decimal _money)
     {
-        decimal _roundedMoney = System.Math.Round(_money, 2);
+
         if (_roundedMoney < 1000)
         {
-            return "Money: " + _roundedMoney;
-        } 
-        else if (_roundedMoney < 1000000)
+            return "Money: " + _money;
+        }
+        else if (_money < 1000000)
         {
             return "Money: " + System.Math.Round(_roundedMoney / 1000, 2) + "K";
         }
-        else if (_roundedMoney < 1000000000)
+        else if (_money < 1000000000)
         {
-            return "Money: " + _roundedMoney / 1000000 + "M";
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000, 2) + "Mio";
+        }
+        else if (_money < 1000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000, 2) + "Mrd";
+        }
+        else if (_money < 1000000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000, 2) + "B";
+        }
+        else if (_money < 1000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000, 2) + "Brd";
+        }
+        else if (_money < 1000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000, 2) + "Tri";
+        }
+        else if (_money < 1000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000000, 2) + "Trd";
+        }
+        else if (_money < 1000000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_roundedMoney / 1000000000000000000000000, 2) + "Qui";
         }
         else
         {
-            return "Money: " + _roundedMoney;
+            Debug.Log("Max Money");
         }
     }
+
 }
