@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text money_txt;
 
+    private void Start()
+    {
+        UpdateMoney(GameManager.coins);
+    }
+
     public void UpdateMoney(float _money)
     {
         money_txt.text = CalculateMoneyShortcut(_money);
