@@ -19,6 +19,8 @@ public class Queue : MonoBehaviour
     public float _waitingDuration = 10f;
     public float _spawnTime = 10f;
 
+    public GameObject[] barrierTapes;
+
     public int _queueLength = 1;
     private int _lengthOwned = 1;
 
@@ -152,17 +154,63 @@ public class Queue : MonoBehaviour
     {
         if (GameManager.coins >= _nextLengthUpgradePrice)
         {
-            GameManager.coins -= _nextLengthUpgradePrice;
-            _lengthOwned++;
-            _queueLength++;
-
-            Vector3 firstPos = transform.position;
-            vectors = new List<Vector3>();
-            for (int i = 0; i < _queueLength; i++)
+            if (_queueLength <= 11)
             {
-                vectors.Add(firstPos + new Vector3(-1, 0) * _posSize * i);
+                GameManager.coins -= _nextLengthUpgradePrice;
+                _lengthOwned++;
+                _queueLength++;
+
+                Vector3 firstPos = transform.position;
+                vectors = new List<Vector3>();
+                for (int i = 0; i < _queueLength; i++)
+                {
+                    vectors.Add(firstPos + new Vector3(-1, 0) * _posSize * i);
+                }
+                _queueFullPos = firstPos + new Vector3(-1, 0) * _posSize * _queueLength;
+
+                switch (_queueLength)
+                {
+                    case 1:
+                        barrierTapes[0].SetActive(true);
+                        break;
+                    case 2:
+                        barrierTapes[0].SetActive(true);
+                        break;
+                    case 3:
+                        barrierTapes[1].SetActive(true);
+                        break;
+                    case 4:
+                        barrierTapes[1].SetActive(true);
+                        break;
+                    case 5:
+                        barrierTapes[2].SetActive(true);
+                        break;
+                    case 6:
+                        barrierTapes[3].SetActive(true);
+                        break;
+                    case 7:
+                        barrierTapes[3].SetActive(true);
+                        break;
+                    case 8:
+                        barrierTapes[4].SetActive(true);
+                        break;
+                    case 9:
+                        barrierTapes[5].SetActive(true);
+                        break;
+                    case 10:
+                        barrierTapes[5].SetActive(true);
+                        break;
+                    case 11:
+                        barrierTapes[6].SetActive(true);
+                        break;
+                    default:
+                        break;
+                }
             }
-            _queueFullPos = firstPos + new Vector3(-1, 0) * _posSize * _queueLength;
+            else
+            {
+                Debug.Log("Maximal queue length reached!");
+            }
         }
         else
         {
