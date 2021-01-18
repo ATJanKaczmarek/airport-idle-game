@@ -21,7 +21,7 @@ public class Queue : MonoBehaviour
 
     public GameObject[] barrierTapes;
 
-    private int _queueLength = 1;
+    public int _queueLength = 1;
 
     private float _nextLengthUpgradePrice;
     private float _nextWaitingTimeUpgradePrice;
@@ -154,7 +154,7 @@ public class Queue : MonoBehaviour
     {
         if (GameManager.coins >= _nextLengthUpgradePrice)
         {
-            if (_queueLength <= 11)
+            if (_queueLength < 11)
             {
                 GameManager.coins -= _nextLengthUpgradePrice;
                 lengthOwned++;
@@ -235,6 +235,8 @@ public class Queue : MonoBehaviour
             GameManager.coins -= _nextSpawnrateUpgradePrice;
             spawnrateUpgradesOwned++;
             _spawnTime--;
+            StopCoroutine(SpawnTimer());
+            StartCoroutine(SpawnTimer());
         }
     }
     #endregion

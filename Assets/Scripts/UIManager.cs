@@ -101,11 +101,47 @@ public class UIManager : MonoBehaviour
         Button _btn2 = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>();
         Button _btn3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<Button>();
 
-        _btn1.onClick.AddListener(queue.UpgradeSpawnrate);
-        _btn2.onClick.AddListener(queue.UpgradeQueueLength);
-        _btn3.onClick.AddListener(queue.UpgradeWaitingTime);
+        _btn1.onClick.AddListener(() => { queue.UpgradeSpawnrate(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn2.onClick.AddListener(() => { queue.UpgradeQueueLength(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn3.onClick.AddListener(() => { queue.UpgradeWaitingTime(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
 
         panel.SetActive(true);
+    }
+
+    private void UpdateUpgradePanel(GameObject panel, Queue queue)
+    {
+        TMP_Text _price1_txt = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        TMP_Text _price2_txt = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        TMP_Text _price3_txt = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+
+        float _price1 = Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.spawnrateUpgradesOwned);
+        float _price2 = Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthOwned);
+        float _price3 = Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.waitingTimeUpgradesOwned);
+
+        Button _btn1 = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
+        Button _btn2 = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>();
+        Button _btn3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<Button>();
+
+        CheckButton(_price1, _btn1);
+        CheckButton(_price2, _btn2);
+        CheckButton(_price3, _btn3);
+
+        _price1_txt.text = "$" + CalculateMoneyShortcut(_price1);
+        _price2_txt.text = "$" + CalculateMoneyShortcut(_price2);
+        _price3_txt.text = "$" + CalculateMoneyShortcut(_price3);
+
+    }
+
+    private void CheckButton(float price, Button btn)
+    {
+        if (GameManager.coins < price)
+        {
+            btn.interactable = false;
+        }
+        else
+        {
+            btn.interactable = true;
+        }
     }
 
 }
