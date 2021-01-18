@@ -59,10 +59,30 @@ public class UIManager : MonoBehaviour
         {
             return "Money: " + System.Math.Round(_money / 1000000000000000, 2) + "Brd";
         }
+        else if (_money < 1000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_money / 1000000000000000000, 2) + "Tri";
+        }
+        else if (_money < 1000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000, 2) + "Trd";
+        }
+        else if (_money < 1000000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000, 2) + "Qui";
+        }
+        else if (_money < 1000000000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000, 2) + "Qrd";
+        }
+        else if (_money < 1000000000000000000000000000000000)
+        {
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000, 2) + "Qut";
+        }
         else
         {
-            Debug.Log("Max Money");
-            return "Max";
+            Debug.Log ("Max Money");
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000, 2) + "Qut";
         }
     }
 }
