@@ -4,8 +4,27 @@ using UnityEngine;
 
 public class QueueUpgrade : MonoBehaviour
 {
-    private void OnMouseUp()
+    public GameObject upgradeUIPanel;
+    private SpriteRenderer _spriteRenderer;
+
+    private void Awake()
     {
-        
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _spriteRenderer.enabled = false;
+    }
+
+    private void OnMouseEnter()
+    {
+        _spriteRenderer.enabled = true;
+    }
+
+    private void OnMouseExit()
+    {
+        _spriteRenderer.enabled = false;
+    }
+
+    private void OnMouseDown()
+    {
+        UIManager.Instance.ActivateUpgradeQueuePanel(upgradeUIPanel, transform.parent.GetComponent<Queue>());
     }
 }
