@@ -35,54 +35,54 @@ public class UIManager : MonoBehaviour
 
     private string CalculateMoneyShortcut(float _money)
     {
-        if (_money < 1000)
+        if (_money < 1000f)
         {
             return "Money: " + _money;
         }
-        else if (_money < 1000000)
+        else if (_money < 1000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000, 2) + "K";
+            return "Money: " + System.Math.Round(_money / 1000f, 2) + "K";
         }
-        else if (_money < 1000000000)
+        else if (_money < 1000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000, 2) + "Mio";
+            return "Money: " + System.Math.Round(_money / 1000000f, 2) + "Mio";
         }
-        else if (_money < 1000000000000)
+        else if (_money < 1000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000, 2) + "Mrd";
+            return "Money: " + System.Math.Round(_money / 1000000000f, 2) + "Mrd";
         }
-        else if (_money < 1000000000000000)
+        else if (_money < 1000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000, 2) + "B";
+            return "Money: " + System.Math.Round(_money / 1000000000000f, 2) + "B";
         }
-        else if (_money < 1000000000000000000)
+        else if (_money < 1000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000, 2) + "Brd";
+            return "Money: " + System.Math.Round(_money / 1000000000000000f, 2) + "Brd";
         }
-        else if (_money < 1000000000000000000000)
+        else if (_money < 1000000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000000, 2) + "Tri";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000f, 2) + "Tri";
         }
-        else if (_money < 1000000000000000000000000)
+        else if (_money < 1000000000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000000000, 2) + "Trd";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000f, 2) + "Trd";
         }
-        else if (_money < 1000000000000000000000000000)
+        else if (_money < 1000000000000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000000000000, 2) + "Qui";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000f, 2) + "Qui";
         }
-        else if (_money < 1000000000000000000000000000000)
+        else if (_money < 1000000000000000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000, 2) + "Qrd";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000f, 2) + "Qrd";
         }
-        else if (_money < 1000000000000000000000000000000000)
+        else if (_money < 1000000000000000000000000000000000f)
         {
-            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000, 2) + "Qut";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000f, 2) + "Qut";
         }
         else
         {
             Debug.Log ("Max Money");
-            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000, 2) + "Qut";
+            return "Money: " + System.Math.Round(_money / 1000000000000000000000000000000f, 2) + "Qut";
         }
     }
 }
