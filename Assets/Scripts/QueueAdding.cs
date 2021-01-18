@@ -6,8 +6,18 @@ public class QueueAdding : MonoBehaviour
 {
     public GameObject queuePrefab;
 
-    public void AddQueueButtonPress()
+    
+    private void Start()
+    {
+        
+
+        Instantiate(queuePrefab);
+            
+    }
+
+    public void AddqueueButtonPress()
     {
 
     }
+   
 }
