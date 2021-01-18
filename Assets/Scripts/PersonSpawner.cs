@@ -22,7 +22,7 @@ public class PersonSpawner : MonoBehaviour
                 currInstance = Instantiate(person02, transform.position, transform.rotation);
                 break;
             case 2:
-                currInstance = Instantiate(person04, transform.position, transform.rotation);
+                currInstance = Instantiate(person03, transform.position, transform.rotation);
                 break;
             case 3:
                 currInstance = Instantiate(person04, transform.position, transform.rotation);
