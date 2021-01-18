@@ -22,14 +22,14 @@ public class Queue : MonoBehaviour
     public GameObject[] barrierTapes;
 
     public int _queueLength = 1;
-    private int _lengthOwned = 1;
 
     private float _nextLengthUpgradePrice;
     private float _nextWaitingTimeUpgradePrice;
     private float _nextSpawnrateUpgradePrice;
 
-    private int _waitingTimeUpgradesOwned = 0;
-    private int _spawnrateUpgradesOwned = 0;
+    public int lengthOwned = 1;
+    public int waitingTimeUpgradesOwned = 0;
+    public int spawnrateUpgradesOwned = 0;
 
     private bool _personDone = false;
 
@@ -49,9 +49,6 @@ public class Queue : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Float: " + float.MaxValue);
-        Debug.Log("Dec: " + decimal.MaxValue);
-
         StartCoroutine(SpawnTimer());
         _timer.SetActive(false);
      
@@ -71,9 +68,9 @@ public class Queue : MonoBehaviour
 
     private void Update()
     {
-        _nextLengthUpgradePrice = (float)System.Math.Round(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _lengthOwned), 2);
-        _nextWaitingTimeUpgradePrice = (float)System.Math.Round(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _waitingTimeUpgradesOwned), 2);
-        _nextSpawnrateUpgradePrice = (float)System.Math.Round(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, _spawnrateUpgradesOwned), 2);
+        _nextLengthUpgradePrice = (float)System.Math.Round(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, lengthOwned), 2);
+        _nextWaitingTimeUpgradePrice = (float)System.Math.Round(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, waitingTimeUpgradesOwned), 2);
+        _nextSpawnrateUpgradePrice = (float)System.Math.Round(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, spawnrateUpgradesOwned), 2);
         if(IsHandlingPerson() == true && HP_running == false)
         {
             StartCoroutine(HandlePerson());
@@ -157,10 +154,10 @@ public class Queue : MonoBehaviour
     {
         if (GameManager.coins >= _nextLengthUpgradePrice)
         {
-            if (_queueLength <= 11)
+            if (_queueLength < 11)
             {
                 GameManager.coins -= _nextLengthUpgradePrice;
-                _lengthOwned++;
+                lengthOwned++;
                 _queueLength++;
 
                 Vector3 firstPos = transform.position;
@@ -226,8 +223,8 @@ public class Queue : MonoBehaviour
         if (GameManager.coins >= _nextWaitingTimeUpgradePrice)
         {
             GameManager.coins -= _nextWaitingTimeUpgradePrice;
-            _waitingTimeUpgradesOwned++;
-            _waitingDuration--;
+            waitingTimeUpgradesOwned++;
+            _waitingDuration -= 0.25f;
         }
     }
 
@@ -236,8 +233,8 @@ public class Queue : MonoBehaviour
         if (GameManager.coins >= _nextSpawnrateUpgradePrice)
         {
             GameManager.coins -= _nextSpawnrateUpgradePrice;
-            _spawnrateUpgradesOwned++;
-            _spawnTime--;
+            spawnrateUpgradesOwned++;
+            _spawnTime -= 0.25f;
         }
     }
     #endregion
