@@ -23,8 +23,6 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public TMP_Text money_txt;
-    public GameObject panel;
-    private Queue _currentQueue;
 
     private void Start()
     {
@@ -34,10 +32,6 @@ public class UIManager : MonoBehaviour
     public void UpdateMoney(float _money)
     {
         money_txt.text = "Money: " + CalculateMoneyShortcut(_money);
-        if (_currentQueue != null)
-        {
-            UpdateUpgradePanel(panel, _currentQueue);
-        }
     }
 
     private string CalculateMoneyShortcut(float _money)
@@ -116,8 +110,6 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUpgradePanel(GameObject panel, Queue queue)
     {
-        _currentQueue = queue;
-
         TMP_Text _price1_txt = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
         TMP_Text _price2_txt = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
         TMP_Text _price3_txt = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
@@ -130,17 +122,19 @@ public class UIManager : MonoBehaviour
         Button _btn2 = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>();
         Button _btn3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<Button>();
 
+        CheckButton(_price1, _btn1);
+        CheckButton(_price2, _btn2);
+        CheckButton(_price3, _btn3);
+
         _price1_txt.text = "$" + CalculateMoneyShortcut(_price1);
         _price2_txt.text = "$" + CalculateMoneyShortcut(_price2);
         _price3_txt.text = "$" + CalculateMoneyShortcut(_price3);
 
-        CheckButton(_price1, _btn1, queue);
-        CheckButton(_price2, _btn2, queue);
-        CheckButton(_price3, _btn3, queue);
     }
 
-    private void CheckButton(float price, Button btn, Queue queue)
+    private void CheckButton(float price, Button btn)
     {
+<<<<<<< HEAD
         if (btn.gameObject.name == "BuyButton:SpawnRate" && queue.spawnrateUpgradesOwned == 39)
         {
             btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";
@@ -162,6 +156,8 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+=======
+>>>>>>> parent of a67cadf... Finished Queue upgrades
         if (GameManager.coins < price)
         {
             btn.interactable = false;
