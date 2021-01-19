@@ -27,7 +27,7 @@ public static class Constants
     };
 
     public const float MULTIPLIER = 1.07f;
-    public const float QUEUE_LENGTH_UPGRADE_BASE_COST = 2500.0f;
+    public const float QUEUE_LENGTH_UPGRADE_BASE_COST = 1000.0f;
     public const float QUEUE_TIME_UPGRADE_BASE_COST = 1000.0f;
     public const float QUEUE_SPAWN_UPGRADE_BASE_COST = 1000.0f;
 

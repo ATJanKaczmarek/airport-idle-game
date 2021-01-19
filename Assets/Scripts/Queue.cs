@@ -224,7 +224,7 @@ public class Queue : MonoBehaviour
         {
             GameManager.coins -= _nextWaitingTimeUpgradePrice;
             waitingTimeUpgradesOwned++;
-            _waitingDuration -= 0.25f;
+            _waitingDuration--;
         }
     }
 
@@ -234,7 +234,9 @@ public class Queue : MonoBehaviour
         {
             GameManager.coins -= _nextSpawnrateUpgradePrice;
             spawnrateUpgradesOwned++;
-            _spawnTime -= 0.25f;
+            _spawnTime--;
+            StopCoroutine(SpawnTimer());
+            StartCoroutine(SpawnTimer());
         }
     }
     #endregion

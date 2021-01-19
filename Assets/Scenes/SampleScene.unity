@@ -1480,7 +1480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &632242723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1657,10 +1657,10 @@ RectTransform:
   m_Father: {fileID: 367074195}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 744.5612, y: -352.4653}
-  m_SizeDelta: {x: 555.1343, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 555.1343, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686162973
 MonoBehaviour:
@@ -2037,6 +2037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money_txt: {fileID: 1583238688}
+  panel: {fileID: 632242722}
 --- !u!4 &869891993
 Transform:
   m_ObjectHideFlags: 0
@@ -3294,10 +3295,10 @@ RectTransform:
   m_Father: {fileID: 367074195}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1230.0687, y: -352.4653}
-  m_SizeDelta: {x: 555.1343, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 555.1343, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372362444
 MonoBehaviour:
@@ -3984,7 +3985,7 @@ MonoBehaviour:
   - {fileID: 918669843}
   - {fileID: 1982067058}
   _queueLength: 1
-  lengthOwned: 1
+  lengthUpgradesOwned: 0
   waitingTimeUpgradesOwned: 0
   spawnrateUpgradesOwned: 0
 --- !u!4 &1506471406
@@ -4335,8 +4336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 493.84, y: 177.91}
+  m_AnchoredPosition: {x: -0.000015259, y: 0.0000047684}
+  m_SizeDelta: {x: 421.5063, y: 168.2396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586536085
 MonoBehaviour:
@@ -4373,7 +4374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7102256706045061542, guid: 033bad50491babe429f1835e0fed7bf2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1af297c02f9b0a84bb4f5a7c868438b5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5718,10 +5719,10 @@ RectTransform:
   m_Father: {fileID: 367074195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.05377, y: -352.4653}
-  m_SizeDelta: {x: 555.1343, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 555.1343, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105330838
 MonoBehaviour:
@@ -5870,6 +5871,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4432990665863430374, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 152
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432990665863430374, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432990665863430374, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432990665863430374, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.125
+      objectReference: {fileID: 0}
     - target: {fileID: 4432990665863430393, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
       propertyPath: upgradeUIPanel
       value: 
@@ -5933,6 +5950,10 @@ PrefabInstance:
     - target: {fileID: 4432990666467939390, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
       propertyPath: _spawnTime
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432990666467939390, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
+      propertyPath: lengthOwned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4432990666467939391, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
       propertyPath: m_Name
