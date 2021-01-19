@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d6c17cc30606b4aa2679400d265600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeUIPanel: {fileID: 0}
 --- !u!1 &4432990665912169962
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4432990666467939391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97884292fe0080041ada8efa9bcc81fb, type: 3}
   m_Name: 
@@ -558,6 +559,9 @@ MonoBehaviour:
   - {fileID: 4432990666165417087}
   - {fileID: 4432990667004956154}
   _queueLength: 1
+  lengthOwned: 0
+  waitingTimeUpgradesOwned: 0
+  spawnrateUpgradesOwned: 0
 --- !u!1 &4432990666921690925
 GameObject:
   m_ObjectHideFlags: 0
