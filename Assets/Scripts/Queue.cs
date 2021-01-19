@@ -27,7 +27,7 @@ public class Queue : MonoBehaviour
     private float _nextWaitingTimeUpgradePrice;
     private float _nextSpawnrateUpgradePrice;
 
-    public int lengthOwned = 1;
+    public int lengthOwned = 0;
     public int waitingTimeUpgradesOwned = 0;
     public int spawnrateUpgradesOwned = 0;
 
@@ -220,23 +220,21 @@ public class Queue : MonoBehaviour
 
     public void UpgradeWaitingTime()
     {
-        if (GameManager.coins >= _nextWaitingTimeUpgradePrice)
+        if (GameManager.coins >= _nextWaitingTimeUpgradePrice && waitingTimeUpgradesOwned < 39)
         {
             GameManager.coins -= _nextWaitingTimeUpgradePrice;
             waitingTimeUpgradesOwned++;
-            _waitingDuration--;
+            _waitingDuration -= 0.25f;
         }
     }
 
     public void UpgradeSpawnrate()
     {
-        if (GameManager.coins >= _nextSpawnrateUpgradePrice)
+        if (GameManager.coins >= _nextSpawnrateUpgradePrice && waitingTimeUpgradesOwned < 39)
         {
             GameManager.coins -= _nextSpawnrateUpgradePrice;
             spawnrateUpgradesOwned++;
-            _spawnTime--;
-            StopCoroutine(SpawnTimer());
-            StartCoroutine(SpawnTimer());
+            _spawnTime -= 0.25f;
         }
     }
     #endregion
