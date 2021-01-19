@@ -31,8 +31,6 @@ public class Queue : MonoBehaviour
     public int waitingTimeUpgradesOwned = 0;
     public int spawnrateUpgradesOwned = 0;
 
-    private bool _personDone = false;
-
     private bool HP_running = false;
 
     private Constants.FlightLevel _flightLevel = Constants.FlightLevel.SIGHTSEEING_FLIGHT;
@@ -58,12 +56,6 @@ public class Queue : MonoBehaviour
             vectors.Add(firstPos + new Vector3(-1, 0) * _posSize * i);
         }
         _queueFullPos = firstPos + new Vector3(-1, 0) * _posSize * _queueLength;
-    }
-
-    private void FixedUpdate()
-    {
-        //ActivateOrDeactivateTimer();
-        // double price = System.Math.Round(baseCost * Mathf.Pow(Constants.MULTIPLIER, owned), 2); // !!!!
     }
 
     private void Update()
@@ -96,8 +88,6 @@ public class Queue : MonoBehaviour
         else
         {
             Person p = _spawner.Spawn(_queueFullPos);
-            //_personCheckedFor = p;
-            //_checkPerson = true;
             StartCoroutine(SendPersonBack(p));
         }
     }
@@ -136,7 +126,6 @@ public class Queue : MonoBehaviour
         _timer.SetActive(true);
         Person p = _persons[0].GetComponent<Person>();
         yield return new WaitForSeconds(_waitingDuration);
-        _personDone = true;
         p.MoveTo(vectors[0] + new Vector3(1, 0) * 5f);
         if (p != null)
         {
@@ -154,7 +143,7 @@ public class Queue : MonoBehaviour
     {
         if (GameManager.coins >= _nextLengthUpgradePrice)
         {
-            if (_queueLength < 11)
+            if (lengthOwned < 10)
             {
                 GameManager.coins -= _nextLengthUpgradePrice;
                 lengthOwned++;
@@ -220,21 +209,27 @@ public class Queue : MonoBehaviour
 
     public void UpgradeWaitingTime()
     {
-        if (GameManager.coins >= _nextWaitingTimeUpgradePrice && waitingTimeUpgradesOwned < 39)
+        if (GameManager.coins >= _nextWaitingTimeUpgradePrice)
         {
-            GameManager.coins -= _nextWaitingTimeUpgradePrice;
-            waitingTimeUpgradesOwned++;
-            _waitingDuration -= 0.25f;
+            if (waitingTimeUpgradesOwned < 39)
+            {
+                GameManager.coins -= _nextWaitingTimeUpgradePrice;
+                waitingTimeUpgradesOwned++;
+                _waitingDuration -= 0.25f;
+            }
         }
     }
 
     public void UpgradeSpawnrate()
     {
-        if (GameManager.coins >= _nextSpawnrateUpgradePrice && waitingTimeUpgradesOwned < 39)
+        if (GameManager.coins >= _nextSpawnrateUpgradePrice)
         {
-            GameManager.coins -= _nextSpawnrateUpgradePrice;
-            spawnrateUpgradesOwned++;
-            _spawnTime -= 0.25f;
+            if (spawnrateUpgradesOwned < 39)
+            {
+                GameManager.coins -= _nextSpawnrateUpgradePrice;
+                spawnrateUpgradesOwned++;
+                _spawnTime -= 0.25f;
+            }
         }
     }
     #endregion

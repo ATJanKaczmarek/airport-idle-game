@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
         panel.SetActive(true);
     }
 
-    private void UpdateUpgradePanel(GameObject panel, Queue queue)
+    public void UpdateUpgradePanel(GameObject panel, Queue queue)
     {
         _currentQueue = queue;
 
@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (btn.gameObject.name == "BuyButton:QueueLength" && queue.lengthOwned == 11)
+        if (btn.gameObject.name == "BuyButton:QueueLength" && queue.lengthOwned == 10)
         {
             btn.interactable = false;
             btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";

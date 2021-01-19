@@ -25,6 +25,11 @@ public class QueueUpgrade : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ClickEvent();
+    }
+
+    public void ClickEvent()
+    {
         UIManager.Instance.ActivateUpgradeQueuePanel(upgradeUIPanel, transform.parent.GetComponent<Queue>());
     }
 }
