@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
         TMP_Text _price3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
 
         _price1.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.spawnrateUpgradesOwned));
-        _price2.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthUpgradesOwned));
+        _price2.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthOwned));
         _price3.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.waitingTimeUpgradesOwned));
 
         Button _btn1 = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         TMP_Text _price3_txt = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
 
         float _price1 = Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.spawnrateUpgradesOwned);
-        float _price2 = Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthUpgradesOwned);
+        float _price2 = Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthOwned);
         float _price3 = Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.waitingTimeUpgradesOwned);
 
         Button _btn1 = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
@@ -142,7 +142,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (btn.gameObject.name == "BuyButton:QueueLength" && queue.lengthUpgradesOwned == 11)
+        if (btn.gameObject.name == "BuyButton:QueueLength" && queue.lengthOwned == 11)
         {
             btn.interactable = false;
             btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";

@@ -27,7 +27,7 @@ public class Queue : MonoBehaviour
     private float _nextWaitingTimeUpgradePrice;
     private float _nextSpawnrateUpgradePrice;
 
-    public int lengthUpgradesOwned = 0;
+    public int lengthOwned = 1;
     public int waitingTimeUpgradesOwned = 0;
     public int spawnrateUpgradesOwned = 0;
 
@@ -68,7 +68,7 @@ public class Queue : MonoBehaviour
 
     private void Update()
     {
-        _nextLengthUpgradePrice = (float)System.Math.Round(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, lengthUpgradesOwned), 2);
+        _nextLengthUpgradePrice = (float)System.Math.Round(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, lengthOwned), 2);
         _nextWaitingTimeUpgradePrice = (float)System.Math.Round(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, waitingTimeUpgradesOwned), 2);
         _nextSpawnrateUpgradePrice = (float)System.Math.Round(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, spawnrateUpgradesOwned), 2);
         if(IsHandlingPerson() == true && HP_running == false)
@@ -157,7 +157,7 @@ public class Queue : MonoBehaviour
             if (_queueLength < 11)
             {
                 GameManager.coins -= _nextLengthUpgradePrice;
-                lengthUpgradesOwned++;
+                lengthOwned++;
                 _queueLength++;
 
                 Vector3 firstPos = transform.position;
