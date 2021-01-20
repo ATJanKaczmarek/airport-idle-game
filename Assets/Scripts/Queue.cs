@@ -82,12 +82,12 @@ public class Queue : MonoBehaviour
     {
         if (CanAddPerson() == true)
         {
-            Person p = _spawner.Spawn(vectors[_persons.Count]);
+            Person p = _spawner.Spawn(vectors[_persons.Count], this);
             _persons.Add(p.gameObject);
         }
         else
         {
-            Person p = _spawner.Spawn(_queueFullPos);
+            Person p = _spawner.Spawn(_queueFullPos, this);
             StartCoroutine(SendPersonBack(p));
         }
     }

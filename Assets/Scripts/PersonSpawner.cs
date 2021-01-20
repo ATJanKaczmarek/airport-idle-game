@@ -9,7 +9,7 @@ public class PersonSpawner : MonoBehaviour
     public GameObject person03;
     public GameObject person04;
 
-    public Person Spawn(Vector3 moveToPos)
+    public Person Spawn(Vector3 moveToPos, Queue queue)
     {
         int rnd = Random.Range(0, 4);
         GameObject currInstance;
@@ -31,6 +31,7 @@ public class PersonSpawner : MonoBehaviour
                 return null;
         }
         Person person = currInstance.GetComponent<Person>();
+        person.SetQueue(queue);
         person.MoveTo(moveToPos);
         return person;
     }

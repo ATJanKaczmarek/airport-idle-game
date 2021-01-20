@@ -74,8 +74,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4432990665863430375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 284.5, y: 40, z: 1}
+  m_LocalPosition: {x: -3.625, y: 0.25, z: 0}
+  m_LocalScale: {x: 152, y: 40, z: 1}
   m_Children: []
   m_Father: {fileID: 4432990666467939377}
   m_RootOrder: 3
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b67910892e2155048b4dee7070a3db79, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.23529412}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.23529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d6c17cc30606b4aa2679400d265600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeUIPanel: {fileID: 0}
 --- !u!1 &4432990665912169962
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +539,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4432990666467939391}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97884292fe0080041ada8efa9bcc81fb, type: 3}
   m_Name: 
@@ -549,7 +548,7 @@ MonoBehaviour:
   vectors: []
   _queueFullPos: {x: 0, y: 0, z: 0}
   _waitingDuration: 10
-  _spawnTime: 1
+  _spawnTime: 10
   barrierTapes:
   - {fileID: 4432990666206792079}
   - {fileID: 4432990667594612478}

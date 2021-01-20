@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class QueueUpgrade : MonoBehaviour
 {
-    public GameObject upgradeUIPanel;
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _spriteRenderer.enabled = false;
+
     }
 
     private void OnMouseEnter()
@@ -30,6 +30,7 @@ public class QueueUpgrade : MonoBehaviour
 
     public void ClickEvent()
     {
+        GameObject upgradeUIPanel = GameObject.Find("OverlayCanvas").transform.GetChild(2).gameObject;
         UIManager.Instance.ActivateUpgradeQueuePanel(upgradeUIPanel, transform.parent.GetComponent<Queue>());
     }
 }

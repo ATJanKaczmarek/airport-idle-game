@@ -10,35 +10,6 @@ public enum HappinessState
 
 public class Person : MonoBehaviour
 {
-
-
-    private int alter;
-
-    void AlterSetzen()
-    {
-        alter += 15;
-        alter = alter + 15;    
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public Sprite happy;
     public Sprite neutral;
     public Sprite mad;
@@ -53,7 +24,6 @@ public class Person : MonoBehaviour
     private void Awake()
     {
         _movingPositions = new Queue<Vector3>();
-        _queue = GameObject.Find("Queue").GetComponent<Queue>();
         _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
@@ -121,6 +91,11 @@ public class Person : MonoBehaviour
     {
         _movingPositions.Enqueue(pos);
         isMoving = true;
+    }
+
+    public void SetQueue(Queue queue)
+    {
+        _queue = queue;
     }
 
     public void SetHappiness(HappinessState happiness)

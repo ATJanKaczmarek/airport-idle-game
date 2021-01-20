@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public TMP_Text money_txt;
+    public Scrollbar scrollbar;
     public GameObject panel;
     private Queue _currentQueue;
 
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         UpdateMoney(GameManager.coins);
     }
 
+    #region Money
     public void UpdateMoney(float _money)
     {
         money_txt.text = "Money: " + CalculateMoneyShortcut(_money);
@@ -92,6 +94,10 @@ public class UIManager : MonoBehaviour
             return System.Math.Round(_money / 1000000000000000000000000000000f, 2) + "Qut";
         }
     }
+
+    #endregion
+
+    #region Upgrades
 
     public void ActivateUpgradeQueuePanel(GameObject panel, Queue queue)
     {
@@ -172,4 +178,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Scrollbar
+    public void ScollbarChanged(float value)
+    {
+        Vector3 minPos = new Vector3(0, 0, -10);
+        Vector3 maxPos = new Vector3(0, ((QueueCount.queueCount - 1) * -2.5f) + 2.5f, -10);
+        Camera.main.transform.position = Vector3.Lerp(minPos, maxPos, value);
+    }
+
+    public void ResizeScrollbar(int queueCount)
+    {
+        scrollbar.size /= queueCount;
+        scrollbar.value = 1f;
+        ScollbarChanged(1f);
+    }
+
+    #endregion
 }
