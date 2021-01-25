@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public static float coins = 10000;
+    public GameObject moneyPopupPrefab;
+    public Transform worldspaceCanvas;
 
-    public void GainMoney(Constants.FlightLevel _level, Constants.FlightClass _class)
+    public void GainMoney(Constants.FlightLevel _level, Constants.FlightClass _class, Vector3 _popupPos)
     {
         float multiplier;
         float price;
@@ -81,6 +83,11 @@ public class GameManager : MonoBehaviour
         }
 
         coins += price * multiplier;
+
+        GameObject popup = Instantiate(moneyPopupPrefab, _popupPos, moneyPopupPrefab.transform.rotation, worldspaceCanvas);
+        popup.GetComponent<MoneyPopup>().insantiationPosition = _popupPos;
+        UIManager.Instance.SetPopUpText(popup, price * multiplier);
+
         UIManager.Instance.UpdateMoney(coins);
     }
 

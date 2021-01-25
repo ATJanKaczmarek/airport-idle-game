@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text money_txt;
     public Scrollbar scrollbar;
     public GameObject panel;
-    private Queue _currentQueue;
+    public Queue _currentQueue;
 
     private void Start()
     {
@@ -42,11 +42,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private string CalculateMoneyShortcut(float _money)
+    public string CalculateMoneyShortcut(float _money)
     {
         if (_money < 1000f)
         {
-            return _money.ToString();
+            return System.Math.Round(_money, 2).ToString();
         }
         else if (_money < 1000000f)
         {
@@ -95,28 +95,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetPopUpText(GameObject _popup, float _money)
+    {
+        TMP_Text _popupText = _popup.GetComponent<TMP_Text>();
+        _popupText.text = "+$" + CalculateMoneyShortcut(_money);
+    }
+
     #endregion
 
     #region Upgrades
 
     public void ActivateUpgradeQueuePanel(GameObject panel, Queue queue)
     {
-        TMP_Text _price1 = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
-        TMP_Text _price2 = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
-        TMP_Text _price3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
-
-        _price1.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_SPAWN_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.spawnrateUpgradesOwned));
-        _price2.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.lengthOwned));
-        _price3.text = "$" + CalculateMoneyShortcut(Constants.QUEUE_TIME_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, queue.waitingTimeUpgradesOwned));
-
-        Button _btn1 = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
-        Button _btn2 = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>();
-        Button _btn3 = panel.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<Button>();
-
-        _btn1.onClick.AddListener(() => { queue.UpgradeSpawnrate(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
-        _btn2.onClick.AddListener(() => { queue.UpgradeQueueLength(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
-        _btn3.onClick.AddListener(() => { queue.UpgradeWaitingTime(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
-
+        UpdateUpgradePanel(panel, queue);
         panel.SetActive(true);
     }
 
@@ -139,6 +130,14 @@ public class UIManager : MonoBehaviour
         _price1_txt.text = "$" + CalculateMoneyShortcut(_price1);
         _price2_txt.text = "$" + CalculateMoneyShortcut(_price2);
         _price3_txt.text = "$" + CalculateMoneyShortcut(_price3);
+
+        _btn1.onClick.RemoveAllListeners();
+        _btn2.onClick.RemoveAllListeners();
+        _btn3.onClick.RemoveAllListeners();
+
+        _btn1.onClick.AddListener(() => { _currentQueue.UpgradeSpawnrate(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn2.onClick.AddListener(() => { _currentQueue.UpgradeQueueLength(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn3.onClick.AddListener(() => { _currentQueue.UpgradeWaitingTime(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
 
         CheckButton(_price1, _btn1, queue);
         CheckButton(_price2, _btn2, queue);
@@ -175,6 +174,15 @@ public class UIManager : MonoBehaviour
         else
         {
             btn.interactable = true;
+        }
+    }
+
+    public void ResetHoverListeners()
+    {
+        QueueUpgrade[] queueUpgrades = FindObjectsOfType<QueueUpgrade>();
+        foreach (QueueUpgrade queueUpgrade in queueUpgrades)
+        {
+            queueUpgrade.canBeTriggered = true;
         }
     }
 

@@ -40,7 +40,7 @@ public class Person : MonoBehaviour
     }
 
     private bool _isMoving = false;
-    public float movementSpeed = 5f;
+    public float movementSpeed = 3f;
 
     private void Start()
     {

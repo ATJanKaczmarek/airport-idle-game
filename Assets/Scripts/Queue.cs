@@ -132,7 +132,7 @@ public class Queue : MonoBehaviour
             RemovePerson(p);
         }
         _timer.SetActive(false);
-        GameManager.Instance.GainMoney(_flightLevel, _flightClass);
+        GameManager.Instance.GainMoney(_flightLevel, _flightClass, p.transform.position);
         HP_running = false;
     }
 
