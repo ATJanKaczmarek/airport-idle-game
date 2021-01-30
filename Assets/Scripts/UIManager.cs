@@ -24,8 +24,9 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text money_txt;
     public Scrollbar scrollbar;
-    public GameObject panel;
-    public Queue _currentQueue;
+    public GameObject queueUpgradePanel;
+    public Queue currentQueue;
+    public Scanner currentScanner;
 
     private void Start()
     {
@@ -36,9 +37,9 @@ public class UIManager : MonoBehaviour
     public void UpdateMoney(float _money)
     {
         money_txt.text = "Money: " + CalculateMoneyShortcut(_money);
-        if (_currentQueue != null)
+        if (currentQueue != null)
         {
-            UpdateUpgradePanel(panel, _currentQueue);
+            UpdateQueueUpgradePanel(queueUpgradePanel, currentQueue);
         }
     }
 
@@ -104,16 +105,17 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Upgrades
-
+    
+    // Queue upgrades:
     public void ActivateUpgradeQueuePanel(GameObject panel, Queue queue)
     {
-        UpdateUpgradePanel(panel, queue);
+        UpdateQueueUpgradePanel(panel, queue);
         panel.SetActive(true);
     }
 
-    public void UpdateUpgradePanel(GameObject panel, Queue queue)
+    public void UpdateQueueUpgradePanel(GameObject panel, Queue queue)
     {
-        _currentQueue = queue;
+        currentQueue = queue;
 
         TMP_Text _price1_txt = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
         TMP_Text _price2_txt = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
@@ -135,9 +137,9 @@ public class UIManager : MonoBehaviour
         _btn2.onClick.RemoveAllListeners();
         _btn3.onClick.RemoveAllListeners();
 
-        _btn1.onClick.AddListener(() => { _currentQueue.UpgradeSpawnrate(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
-        _btn2.onClick.AddListener(() => { _currentQueue.UpgradeQueueLength(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
-        _btn3.onClick.AddListener(() => { _currentQueue.UpgradeWaitingTime(); UpdateUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn1.onClick.AddListener(() => { currentQueue.UpgradeSpawnrate(); UpdateQueueUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn2.onClick.AddListener(() => { currentQueue.UpgradeQueueLength(); UpdateQueueUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
+        _btn3.onClick.AddListener(() => { currentQueue.UpgradeWaitingTime(); UpdateQueueUpgradePanel(panel, queue); UpdateMoney(GameManager.coins); });
 
         CheckButton(_price1, _btn1, queue);
         CheckButton(_price2, _btn2, queue);
@@ -183,6 +185,50 @@ public class UIManager : MonoBehaviour
         foreach (QueueUpgrade queueUpgrade in queueUpgrades)
         {
             queueUpgrade.canBeTriggered = true;
+        }
+
+        ScannerUpgrade[] scannerUpgrades = FindObjectsOfType<ScannerUpgrade>();
+        foreach (ScannerUpgrade scannerUpgrade in scannerUpgrades)
+        {
+            scannerUpgrade.canBeTriggered = true;
+        }
+    }
+
+    // Scanner upgrades:
+    public void ActivateUpgradeScannerPanel(GameObject panel, Scanner scanner)
+    {
+        UpdateScannerUpgradePanel(panel, scanner);
+        panel.SetActive(true);
+    }
+
+    public void UpdateScannerUpgradePanel(GameObject panel, Scanner scanner)
+    {
+        currentScanner = scanner;
+        TMP_Text priceTxt = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        float price = Constants.SCANNER_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, scanner.upgradesOwned);
+        Button btn = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
+        priceTxt.text = "$" + CalculateMoneyShortcut(price);
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(() => { currentScanner.Upgrade(); UpdateScannerUpgradePanel(panel, scanner); UpdateMoney(GameManager.coins); });
+        CheckButton(price, btn, scanner);
+    }
+
+    private void CheckButton(float price, Button btn, Scanner scanner)
+    {
+        if (btn.gameObject.name == "BuyButton:ScannerUpgrade" && scanner.upgradesOwned == 10)
+        {
+            btn.interactable = false;
+            btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";
+            return;
+        }
+
+        if (GameManager.coins < price)
+        {
+            btn.interactable = false;
+        }
+        else
+        {
+            btn.interactable = true;
         }
     }
 

@@ -10,6 +10,7 @@ public class MoneyPopup : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Timer());
+        Destroy(gameObject, 3f);
     }
 
     private IEnumerator Timer()

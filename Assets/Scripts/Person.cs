@@ -40,7 +40,7 @@ public class Person : MonoBehaviour
     }
 
     private bool _isMoving = false;
-    public float movementSpeed = 3f;
+    private float movementSpeed = 3f;
 
     private void Start()
     {
@@ -103,12 +103,15 @@ public class Person : MonoBehaviour
         switch (happiness)
         {
             case HappinessState.Happy:
+                currentHappiness = HappinessState.Happy;
                 _spriteRenderer.sprite = happy;
                 break;
             case HappinessState.Neutral:
+                currentHappiness = HappinessState.Neutral;
                 _spriteRenderer.sprite = neutral;
                 break;
             case HappinessState.Mad:
+                currentHappiness = HappinessState.Mad;
                 _spriteRenderer.sprite = mad;
                 break;
             default:

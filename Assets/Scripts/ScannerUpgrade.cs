@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class QueueUpgrade : MonoBehaviour
+public class ScannerUpgrade : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
     public bool canBeTriggered = true;
-    public QueueUpgrade[] otherTriggers;
+    public ScannerUpgrade[] otherTriggers;
 
     private void OnEnable()
     {
@@ -32,14 +32,14 @@ public class QueueUpgrade : MonoBehaviour
 
     public void ClickEvent()
     {
-        otherTriggers = FindObjectsOfType<QueueUpgrade>();
-        foreach (QueueUpgrade clickListener in otherTriggers)
+        otherTriggers = FindObjectsOfType<ScannerUpgrade>();
+        foreach (ScannerUpgrade clickListener in otherTriggers)
         {
             clickListener.canBeTriggered = false;
             _spriteRenderer.enabled = false;
         }
 
-        GameObject upgradeUIPanel = GameObject.Find("OverlayCanvas").transform.GetChild(2).gameObject;
-        UIManager.Instance.ActivateUpgradeQueuePanel(upgradeUIPanel, transform.parent.GetComponent<Queue>());
+        GameObject upgradeUIPanel = GameObject.Find("OverlayCanvas").transform.GetChild(3).gameObject;
+        UIManager.Instance.ActivateUpgradeScannerPanel(upgradeUIPanel, transform.GetChild(0).GetComponent<Scanner>());
     }
 }

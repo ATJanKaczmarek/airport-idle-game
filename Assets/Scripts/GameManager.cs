@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public static float coins = 10000;
+    public static float coins = 0;
     public GameObject moneyPopupPrefab;
     public Transform worldspaceCanvas;
 

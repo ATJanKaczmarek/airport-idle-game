@@ -126,10 +126,11 @@ public class Queue : MonoBehaviour
         _timer.SetActive(true);
         Person p = _persons[0].GetComponent<Person>();
         yield return new WaitForSeconds(_waitingDuration);
-        p.MoveTo(vectors[0] + new Vector3(1, 0) * 5f);
+        p.MoveTo(vectors[0] + new Vector3(1, 0) * 18.2f); // Sends person to Bodyscanner
         if (p != null)
         {
             RemovePerson(p);
+            p.SetHappiness(HappinessState.Happy);
         }
         _timer.SetActive(false);
         GameManager.Instance.GainMoney(_flightLevel, _flightClass, p.transform.position);
