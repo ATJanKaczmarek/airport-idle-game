@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class QueueCount : MonoBehaviour
@@ -10,5 +11,6 @@ public class QueueCount : MonoBehaviour
     {
         queueCount++;
         UIManager.Instance.ResizeScrollbar(queueCount);
+        UIManager.Instance.CalculateNewLanePrice();
     }
 }

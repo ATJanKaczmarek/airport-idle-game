@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class QueueAdding : MonoBehaviour
+public class LaneAdding : MonoBehaviour
 {
     public GameObject queuePrefab;
     public GameObject canvas;
     public Transform queueParent;
     private Vector3 oldQueuePosition;
-
 
     private void Start()
     {
@@ -18,7 +16,7 @@ public class QueueAdding : MonoBehaviour
 
     }
 
-    public void AddQueueButtonPress()
+    public void AddLane()
     {
         oldQueuePosition.y -= 2.5f;
         Instantiate(queuePrefab, oldQueuePosition, queueParent.rotation, queueParent);

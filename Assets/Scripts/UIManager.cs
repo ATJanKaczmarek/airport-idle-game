@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public TMP_Text money_txt;
+    public TMP_Text laneAddingText;
     public Scrollbar scrollbar;
     public GameObject queueUpgradePanel;
-    public Queue currentQueue;
-    public Scanner currentScanner;
+    public GameObject scannerUpgradePanel;
+    [HideInInspector] public Queue currentQueue;
+    [HideInInspector] public Scanner currentScanner;
 
     private void Start()
     {
@@ -37,10 +39,26 @@ public class UIManager : MonoBehaviour
     public void UpdateMoney(float _money)
     {
         money_txt.text = "Money: " + CalculateMoneyShortcut(_money);
+        
         if (currentQueue != null)
         {
             UpdateQueueUpgradePanel(queueUpgradePanel, currentQueue);
         }
+
+        if (currentScanner != null)
+        {
+            UpdateScannerUpgradePanel(scannerUpgradePanel, currentScanner);
+        }
+
+        if (CalculateNewLanePrice() < GameManager.coins)
+        {
+            laneAddingText.transform.parent.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            laneAddingText.transform.parent.GetComponent<Button>().interactable = false;
+        }
+
     }
 
     public string CalculateMoneyShortcut(float _money)
@@ -247,6 +265,33 @@ public class UIManager : MonoBehaviour
         scrollbar.size /= queueCount;
         scrollbar.value = 1f;
         ScollbarChanged(1f);
+    }
+
+    #endregion
+
+    #region Lanes
+    
+    public float CalculateNewLanePrice()
+    {
+        float price = Constants.LANE_BASE_PRICE * Mathf.Pow(Constants.MULTIPLIER, QueueCount.queueCount);
+        laneAddingText.text = "Buy new Lane for: " + "$" + CalculateMoneyShortcut(price);
+        return price;
+    }
+
+    public void BuyNewLane()
+    {
+        float price = CalculateNewLanePrice();
+
+        if (price < GameManager.coins)
+        {
+            GameManager.coins -= price;
+            UpdateMoney(GameManager.coins);
+            laneAddingText.transform.parent.GetComponent<LaneAdding>().AddLane();
+        }
+        else
+        {
+            laneAddingText.transform.parent.GetComponent<Button>().interactable = false;
+        }
     }
 
     #endregion

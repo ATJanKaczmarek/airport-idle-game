@@ -29,10 +29,13 @@ public static class Constants
     // Multiplier for every incrementation
     public const float MULTIPLIER = 1.07f;
 
+    // Base cost of new Lanes
+    public const float LANE_BASE_PRICE = 1000.0f;
+
     // Base costs for very queue upgrade
-    public const float QUEUE_LENGTH_UPGRADE_BASE_COST = 2500.0f;
+    public const float QUEUE_LENGTH_UPGRADE_BASE_COST = 250.0f;
     public const float QUEUE_TIME_UPGRADE_BASE_COST = 100.0f;
-    public const float QUEUE_SPAWN_UPGRADE_BASE_COST = 1000.0f;
+    public const float QUEUE_SPAWN_UPGRADE_BASE_COST = 100.0f;
 
     // Payments for different airplane levels
     public const float PAYMENT_SIGHTSEEING_FLIGHT = 20.0f;

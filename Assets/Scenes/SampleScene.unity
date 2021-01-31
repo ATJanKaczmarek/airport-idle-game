@@ -1610,8 +1610,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money_txt: {fileID: 1583238688}
+  laneAddingText: {fileID: 1145743307}
   scrollbar: {fileID: 872001346}
-  queueUpgradePanel: {fileID: 0}
+  queueUpgradePanel: {fileID: 632242722}
+  scannerUpgradePanel: {fileID: 1364426742}
   currentQueue: {fileID: 0}
   currentScanner: {fileID: 0}
 --- !u!4 &869891993
@@ -2364,10 +2366,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Add Queue
+  m_text: 'Buy new Lane for: $1K'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98b625f9f635d514d95d7c5b5055a245, type: 2}
+  m_sharedMaterial: {fileID: -6506978518833288736, guid: 98b625f9f635d514d95d7c5b5055a245, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2391,12 +2393,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 33.1
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 33.1
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4204,7 +4206,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1878249633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3659d954c8e29e44f92ff65a898dfe04, type: 3}
+  m_Script: {fileID: 11500000, guid: acad9aa6697faf742a633175db90d91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   queuePrefab: {fileID: 4432990666467939391, guid: f343b69365c741247a8ee0b57fd84cab, type: 3}
@@ -4254,9 +4256,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1878249635}
-        m_TargetAssemblyTypeName: QueueAdding, Assembly-CSharp
-        m_MethodName: AddQueueButtonPress
+      - m_Target: {fileID: 869891992}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: BuyNewLane
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
