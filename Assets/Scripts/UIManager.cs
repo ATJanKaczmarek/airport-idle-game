@@ -59,6 +59,11 @@ public class UIManager : MonoBehaviour
             laneAddingText.transform.parent.GetComponent<Button>().interactable = false;
         }
 
+        BuyDutyFree[] dutyFreeButtons = FindObjectsOfType<BuyDutyFree>();
+        foreach (BuyDutyFree button in dutyFreeButtons)
+        {
+            button.CheckBuyable();
+        }
     }
 
     public string CalculateMoneyShortcut(float _money)
@@ -294,5 +299,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Duty-Free
+    
+    public bool BuyDutyFree(int pos, int queueId)
+    {
+        if (GameManager.coins > Constants.DUTY_FREE_SHOP_PRICE)
+        {
+            Queue q = GameManager.QueueFromId(queueId);
+            q.ActivateDutyFreeShop(pos);
+            GameManager.coins -= Constants.DUTY_FREE_SHOP_PRICE;
+            UpdateMoney(GameManager.coins);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     #endregion
 }

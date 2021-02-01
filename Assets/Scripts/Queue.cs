@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class Queue : MonoBehaviour
 {
     #region Variables
+    public int queueId;
+
+    private GameObject _dutyFree1;
+    private GameObject _dutyFree2;
+    private GameObject _dutyFree1Button;
+    private GameObject _dutyFree2Button;
+
     [SerializeField]
     private List<GameObject> _persons;
-    
+
     private PersonSpawner _spawner;
 
     public List<Vector3> vectors;
@@ -20,6 +27,7 @@ public class Queue : MonoBehaviour
     public float _spawnTime = 10f;
 
     public GameObject[] barrierTapes;
+    public GameObject[] dutyFreeShops;
 
     public int _queueLength = 1;
 
@@ -43,6 +51,16 @@ public class Queue : MonoBehaviour
     {
         _spawner = transform.GetChild(0).GetComponent<PersonSpawner>();
         _timer = transform.GetChild(1).gameObject;
+
+        _dutyFree1 = transform.GetChild(2).Find("DutyFree1").gameObject;
+        _dutyFree2 = transform.GetChild(2).Find("DutyFree2").gameObject;
+        _dutyFree1.SetActive(false);
+        _dutyFree2.SetActive(false);
+
+        _dutyFree1Button = transform.GetChild(2).Find("DutyFree1:Buy").gameObject;
+        _dutyFree2Button = transform.GetChild(2).Find("DutyFree2:Buy").gameObject;
+        _dutyFree1Button.SetActive(false);
+        _dutyFree2Button.SetActive(false);
     }
 
     private void Start()
@@ -171,6 +189,7 @@ public class Queue : MonoBehaviour
                         break;
                     case 4:
                         barrierTapes[1].SetActive(true);
+                        _dutyFree1Button.SetActive(true);
                         break;
                     case 5:
                         barrierTapes[2].SetActive(true);
@@ -183,6 +202,7 @@ public class Queue : MonoBehaviour
                         break;
                     case 8:
                         barrierTapes[4].SetActive(true);
+                        _dutyFree2Button.SetActive(true);
                         break;
                     case 9:
                         barrierTapes[5].SetActive(true);
@@ -231,6 +251,18 @@ public class Queue : MonoBehaviour
                 spawnrateUpgradesOwned++;
                 _spawnTime -= 0.25f;
             }
+        }
+    }
+
+    public void ActivateDutyFreeShop(int pos)
+    {
+        if (pos == 1)
+        {
+            _dutyFree1.SetActive(true);
+        }
+        else if (pos == 2)
+        {
+            _dutyFree2.SetActive(true);
         }
     }
     #endregion

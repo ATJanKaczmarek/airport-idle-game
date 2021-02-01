@@ -288,7 +288,7 @@ RectTransform:
   m_Children:
   - {fileID: 1878249634}
   m_Father: {fileID: 466407121}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1248,9 +1248,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1014437023}
   - {fileID: 1171545993}
   - {fileID: 59551824}
+  - {fileID: 1014437023}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1266,6 +1266,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1350,6 +1351,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &525953491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1983,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 466407121}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062773310
 GameObject:
@@ -2541,7 +2558,7 @@ RectTransform:
   - {fileID: 1062773311}
   - {fileID: 1349774095}
   m_Father: {fileID: 466407121}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2794,6 +2811,12 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     volume: 0.3
+    pitch: 1
+  - name: Build
+    clip: {fileID: 8300000, guid: ebb3fe6fad3d119479dfb0bcc965a1b0, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
     pitch: 1
   mixerGroup: {fileID: 24300002, guid: eb5c41140afe16b41979d4c089caa993, type: 2}
 --- !u!4 &1320721357

@@ -96,4 +96,17 @@ public class GameManager : MonoBehaviour
         coins += 100000000000000;
         UIManager.Instance.UpdateMoney(coins);
     }
+
+    public static Queue QueueFromId(int id)
+    {
+        Queue[] queues = FindObjectsOfType<Queue>();
+        foreach (Queue q in queues)
+        {
+            if (q.queueId == id)
+            {
+                return q;
+            }
+        }
+        return null;
+    }
 }

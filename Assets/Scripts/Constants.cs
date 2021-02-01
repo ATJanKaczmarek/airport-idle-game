@@ -32,6 +32,9 @@ public static class Constants
     // Base cost of new Lanes
     public const float LANE_BASE_PRICE = 1000.0f;
 
+    // Price of Duty-Free shops
+    public const float DUTY_FREE_SHOP_PRICE = 100.0f;
+
     // Base costs for very queue upgrade
     public const float QUEUE_LENGTH_UPGRADE_BASE_COST = 250.0f;
     public const float QUEUE_TIME_UPGRADE_BASE_COST = 100.0f;
