@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 4432990665863430393}
   m_Layer: 0
   m_Name: QueueHoverColor
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d6c17cc30606b4aa2679400d265600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeTriggered: 1
+  interactable: 1
   otherTriggers: []
 --- !u!1 &4432990665912169962
 GameObject:
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 2138209819472587294}
   m_Layer: 0
   m_Name: DutyFree1:Buy
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1507,6 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591e9a6ba612c78418f059fe76d9871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 0
 --- !u!61 &2138209819472587294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1548,7 +1549,7 @@ GameObject:
   - component: {fileID: 1775814049724290018}
   m_Layer: 0
   m_Name: DutyFree2
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1630,6 +1631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286b79a91c3b83e48a5245ead7402630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  makesMoney: 0
+  interactable: 1
 --- !u!61 &6472983089020134172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1842,7 +1845,7 @@ GameObject:
   - component: {fileID: 8351768827451369506}
   m_Layer: 0
   m_Name: DutyFree1
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1924,6 +1927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286b79a91c3b83e48a5245ead7402630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  makesMoney: 0
+  interactable: 1
 --- !u!61 &1038453291135457840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1985,7 +1990,7 @@ GameObject:
   - component: {fileID: 3531754456587781298}
   m_Layer: 0
   m_Name: DutyFree2:Buy
-  m_TagString: Untagged
+  m_TagString: Trigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,6 +2072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591e9a6ba612c78418f059fe76d9871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 0
 --- !u!61 &3531754456587781298
 BoxCollider2D:
   m_ObjectHideFlags: 0

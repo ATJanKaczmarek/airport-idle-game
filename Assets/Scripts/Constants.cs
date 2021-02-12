@@ -27,7 +27,7 @@ public static class Constants
     };
 
     // Multiplier for every incrementation
-    public const float MULTIPLIER = 1.07f;
+    public const float MULTIPLIER = 1.5f;
 
     // Base cost of new Lanes
     public const float LANE_BASE_PRICE = 1000.0f;

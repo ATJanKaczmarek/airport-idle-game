@@ -10,7 +10,7 @@ public class LaneAdding : MonoBehaviour
 
     private void Start()
     {
-        oldQueuePosition = new Vector3(0, 2.5f, 0);
+        oldQueuePosition = new Vector3(0, 2.25f, 0);
 
         GameObject current = Instantiate(queuePrefab, oldQueuePosition, queueParent.rotation, queueParent);
         current.GetComponent<Queue>().queueId = 1;
@@ -18,11 +18,11 @@ public class LaneAdding : MonoBehaviour
 
     public void AddLane()
     {
-        oldQueuePosition.y -= 2.5f;
+        oldQueuePosition.y -= 3f;
         GameObject current = Instantiate(queuePrefab, oldQueuePosition, queueParent.rotation, queueParent);
         current.GetComponent<Queue>().queueId = QueueCount.queueCount + 1;
 
-        Vector3 newButtonPos = new Vector3(0, canvas.transform.position.y - 2.5f, 0);
+        Vector3 newButtonPos = new Vector3(0, canvas.transform.position.y - 3f, 0);
         canvas.transform.position = newButtonPos;
     }
 }

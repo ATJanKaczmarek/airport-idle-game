@@ -91,6 +91,16 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.UpdateMoney(coins);
     }
 
+    public void GainMoney(float _moneyGained, Vector3 _popupPos)
+    {
+        coins += _moneyGained;
+        GameObject popup = Instantiate(moneyPopupPrefab, _popupPos, moneyPopupPrefab.transform.rotation, worldspaceCanvas);
+        popup.GetComponent<MoneyPopup>().insantiationPosition = _popupPos;
+        UIManager.Instance.SetPopUpText(popup, _moneyGained);
+
+        UIManager.Instance.UpdateMoney(coins);
+    }
+
     public void AddMoneyButton()
     {
         coins += 100000000000000;

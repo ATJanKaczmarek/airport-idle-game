@@ -245,7 +245,7 @@ public class Queue : MonoBehaviour
     {
         if (GameManager.coins >= _nextSpawnrateUpgradePrice)
         {
-            if (spawnrateUpgradesOwned < 39)
+            if (spawnrateUpgradesOwned < 38)
             {
                 GameManager.coins -= _nextSpawnrateUpgradePrice;
                 spawnrateUpgradesOwned++;

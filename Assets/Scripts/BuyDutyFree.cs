@@ -5,28 +5,27 @@ using UnityEngine.EventSystems;
 
 public class BuyDutyFree : MonoBehaviour
 {
-    private bool interactable = true;
+    public bool interactable = false;
 
     private void Start()
     {
         CheckBuyable();
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
-        if (interactable == true)
+        if (interactable == true && UIManager.Instance.hasActiveUIPanel == false)
             GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     private void OnMouseExit()
     {
-        if (interactable == true)
-            GetComponent<SpriteRenderer>().color = Color.white;
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void OnMouseDown()
     {
-        if (interactable)
+        if (interactable == true && UIManager.Instance.hasActiveUIPanel == false)
         {
             if (gameObject.name == "DutyFree1:Buy")
             {
@@ -52,12 +51,10 @@ public class BuyDutyFree : MonoBehaviour
     {
         if (GameManager.coins > Constants.DUTY_FREE_SHOP_PRICE)
         {
-            interactable = true;
             GetComponent<SpriteRenderer>().color = Color.white;
         }
         else
         {
-            interactable = false;
             GetComponent<SpriteRenderer>().color = new Color(200f, 200f, 200f, 0.5f);
         }
     }
