@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 public static class Constants
 {
+    public enum ScannerRewards
+    {
+        MONEY,
+    }
+
     public enum FlightLevel
     {
         SIGHTSEEING_FLIGHT,

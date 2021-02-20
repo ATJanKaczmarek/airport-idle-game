@@ -11,7 +11,9 @@ public class Scanner : MonoBehaviour
     public int upgradesOwned = 0;
     private int probability = 100;
 
-    private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();
+    public GameObject scannerEventIcon;
+
+    private void Awake() { _spriteRenderer = GetComponent<SpriteRenderer>(); scannerEventIcon.SetActive(false); }
 
     public void Upgrade() { if (upgradesOwned < 10) { probability -= 10; upgradesOwned++; } else { Debug.Log("Maxed Scanner"); } }
 
@@ -23,11 +25,11 @@ public class Scanner : MonoBehaviour
             int rnd = Random.Range(0, probability);
             if (rnd == 0)
             {
-                Debug.Log("Scanner Event!");
+                scannerEventIcon.SetActive(true);
+                AudioManager.instance.Play("BodyScanner");
             }
 
             _spriteRenderer.sprite = green;
-            AudioManager.instance.Play("BodyScanner");
             StartCoroutine(SetRed());
         }
     }

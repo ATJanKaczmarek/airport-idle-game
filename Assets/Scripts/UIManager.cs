@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,11 +33,19 @@ public class UIManager : MonoBehaviour
     public GameObject queueUpgradePanel;
     public GameObject scannerUpgradePanel;
     public GameObject dutyFreeShopUpgradePanel;
+    public GameObject scannerEventPanel;
     [HideInInspector] public Queue currentQueue;
     [HideInInspector] public Scanner currentScanner;
     private DutyFreeShop currentShop;
+    
 
     public bool hasActiveUIPanel = false;
+
+    public Sprite suitcaseOpen;
+    public Sprite suitcaseClosed;
+    public Image suitcaseVisual;
+    private Constants.ScannerRewards rewardType;
+
 
     private void Start()
     {
@@ -230,7 +239,7 @@ public class UIManager : MonoBehaviour
         ScannerUpgrade[] scannerUpgrades = FindObjectsOfType<ScannerUpgrade>();
         foreach (ScannerUpgrade scannerUpgrade in scannerUpgrades)
         {
-            scannerUpgrade.canBeTriggered = true;
+            scannerUpgrade.interactable = true;
         }
     }
 
@@ -410,6 +419,10 @@ public class UIManager : MonoBehaviour
             {
                 trigger.GetComponent<BuyDutyFree>().interactable = false;
             }
+            else if (trigger.GetComponent<ScannerUpgrade>() == true)
+            {
+                trigger.GetComponent<ScannerUpgrade>().interactable = false;
+            }
         }
         hasActiveUIPanel = true;
     }
@@ -431,8 +444,76 @@ public class UIManager : MonoBehaviour
             {
                 trigger.GetComponent<BuyDutyFree>().interactable = true;
             }
+            else if (trigger.GetComponent<ScannerUpgrade>() == true)
+            {
+                trigger.GetComponent<ScannerUpgrade>().interactable = true;
+            }
         }
         hasActiveUIPanel = false;
     }
+    #endregion
+
+    #region Scanner event
+
+    public void OpenScannerEvent(Constants.ScannerRewards reward, GameObject popup)
+    {
+        if (hasActiveUIPanel == false)
+        {
+            FadeInSuitcasePanel();
+            DeavtivateTriggers();
+
+            rewardType = reward;
+
+            popup.SetActive(false);
+        }
+    }
+    public void FadeInSuitcasePanel()
+    {
+        LeanTween.moveLocalY(scannerEventPanel, 0f, 1f).setEaseInOutCirc().setOnComplete(() => shakingAllowed = true);
+    }
+
+    public void OnSuitcaseOpen()
+    {
+        if (rewardType == Constants.ScannerRewards.MONEY)
+        {
+            float money = Random.Range(0f, GameManager.coins / 2);
+            GameManager.coins += money;
+            UpdateMoney(GameManager.coins);
+            suitcaseVisual.sprite = suitcaseOpen;
+            shakingAllowed = false;
+
+            FadeOutSuitcasePanel();
+            
+            suitcaseVisual.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(true);
+        }
+    }
+    
+    public void FadeOutSuitcasePanel()
+    {
+        LeanTween.moveLocalY(scannerEventPanel, -Screen.height, 1f).setEaseInOutCirc().setOnComplete(ResetScannerEventPanel);
+        ActivateTriggers();
+    }
+
+    private void ResetScannerEventPanel()
+    {
+        hasActiveUIPanel = false;
+        suitcaseVisual.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(false);
+        suitcaseVisual.sprite = suitcaseClosed;
+    }
+
+    private bool shakingAllowed = true;
+    public void Shake()
+    {
+        if (LeanTween.isTweening(suitcaseVisual.gameObject) == false && shakingAllowed == true)
+        {
+            float rot = suitcaseVisual.transform.rotation.z;
+            var seq = LeanTween.sequence();
+
+            seq.append(LeanTween.rotateZ(suitcaseVisual.gameObject, rot - 1f, 0.05f));
+            seq.append(LeanTween.rotateZ(suitcaseVisual.gameObject, rot + 1f, 0.05f));
+            seq.append(LeanTween.rotateZ(suitcaseVisual.gameObject, rot, 0.025f));
+        }
+    }
+
     #endregion
 }
