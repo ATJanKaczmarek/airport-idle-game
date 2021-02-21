@@ -61,8 +61,7 @@ public class Person : MonoBehaviour
                 _spriteRenderer.sprite = mad;
                 break;
             case HappinessState.Mad:
-                Destroy(gameObject);
-                _queue.RemovePerson(this);
+                _queue.RemovePerson(this, true);
                 break;
             default:
                 break;

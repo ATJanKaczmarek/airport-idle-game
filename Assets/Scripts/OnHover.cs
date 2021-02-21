@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public UnityEvent onHover;
+    public UnityEvent hoverEnd;
+    public UnityEvent onClick;
     private bool isHovering = false;
 
     private void Update()
@@ -14,6 +16,10 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (isHovering == true)
         {
             onHover.Invoke();
+        }
+        else
+        {
+            hoverEnd.Invoke();
         }
     }
 
@@ -28,5 +34,10 @@ public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData eventData)
     {
         isHovering = false;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        onClick.Invoke();
     }
 }

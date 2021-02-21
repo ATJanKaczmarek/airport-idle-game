@@ -124,13 +124,15 @@ public class Queue : MonoBehaviour
         personToSendBack.MoveTo(new Vector3(-6.25f, 7f));
     }
 
-    public void RemovePerson(Person person)
+    public void RemovePerson(Person person, bool destroyPerson)
     {
         _persons.Remove(person.gameObject);
         for (int i = 0; i < _persons.Count; i++)
         {
             _persons[i].GetComponent<Person>().MoveTo(vectors[i]);
         }
+        if (destroyPerson == true)
+            Destroy(person.gameObject);
     }
 
     private bool IsHandlingPerson()
@@ -147,11 +149,11 @@ public class Queue : MonoBehaviour
         p.MoveTo(vectors[0] + new Vector3(1, 0) * 18.2f); // Sends person to Bodyscanner
         if (p != null)
         {
-            RemovePerson(p);
             p.SetHappiness(HappinessState.Happy);
+            GameManager.Instance.GainMoney(_flightLevel, _flightClass, p.transform.position);
+            RemovePerson(p, false);
         }
         _timer.SetActive(false);
-        GameManager.Instance.GainMoney(_flightLevel, _flightClass, p.transform.position);
         HP_running = false;
     }
 

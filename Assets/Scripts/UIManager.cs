@@ -288,7 +288,7 @@ public class UIManager : MonoBehaviour
     public void ScrollbarChanged(float value)
     {
         Vector3 minPos = new Vector3(0, 0, -10);
-        Vector3 maxPos = new Vector3(0, ((QueueCount.queueCount - 1) * -3f) + 3f, -10);
+        Vector3 maxPos = new Vector3(0, ((QueueCount.queueCount - 1) * -3f) - 2.25f, -10);
         Camera.main.transform.position = Vector3.Lerp(minPos, maxPos, value);
     }
 

@@ -10,7 +10,7 @@ public class LaneAdding : MonoBehaviour
 
     private void Start()
     {
-        oldQueuePosition = new Vector3(0, 2.25f, 0);
+        oldQueuePosition = new Vector3(0, -2.25f, 0);
 
         GameObject current = Instantiate(queuePrefab, oldQueuePosition, queueParent.rotation, queueParent);
         current.GetComponent<Queue>().queueId = 1;
