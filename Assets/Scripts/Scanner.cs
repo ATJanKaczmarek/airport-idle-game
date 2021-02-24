@@ -15,7 +15,7 @@ public class Scanner : MonoBehaviour
 
     private void Awake() { _spriteRenderer = GetComponent<SpriteRenderer>(); scannerEventIcon.SetActive(false); }
 
-    public void Upgrade() { if (upgradesOwned < 10) { probability -= 10; upgradesOwned++; } else { Debug.Log("Maxed Scanner"); } }
+    public void Upgrade(float price) { if (upgradesOwned < 10) { probability -= 10; upgradesOwned++; GameManager.coins -= price; } else { Debug.Log("Maxed Scanner"); } }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

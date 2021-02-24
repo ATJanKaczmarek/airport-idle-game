@@ -20,6 +20,7 @@ public class Person : MonoBehaviour
     private HappinessState currentHappiness = HappinessState.Happy;
 
     private Queue<Vector3> _movingPositions;
+    private bool walkedByScanner = false;
 
     private void Awake()
     {
@@ -83,7 +84,13 @@ public class Person : MonoBehaviour
             {
                 _isMoving = false;
             }
-        }
+
+            if (transform.position.x >= 18.2f && walkedByScanner == false)
+            {
+                walkedByScanner = true;
+                SetHappiness(HappinessState.Happy);
+            }
+        }   
     }
 
     public void MoveTo(Vector3 pos)

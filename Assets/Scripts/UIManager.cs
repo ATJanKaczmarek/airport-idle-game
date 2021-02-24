@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text money_txt;
     public TMP_Text laneAddingText;
+    public TMP_Text queueCountText;
     public Scrollbar scrollbar;
     public Image switchImage;
     public Sprite happy_ico;
@@ -33,9 +34,11 @@ public class UIManager : MonoBehaviour
     public GameObject queueUpgradePanel;
     public GameObject scannerUpgradePanel;
     public GameObject dutyFreeShopUpgradePanel;
+    public GameObject airplaneUpgradePanel;
     public GameObject scannerEventPanel;
     [HideInInspector] public Queue currentQueue;
     [HideInInspector] public Scanner currentScanner;
+    [HideInInspector] public Airplane currentAirplane;
     private DutyFreeShop currentShop;
     
 
@@ -55,7 +58,7 @@ public class UIManager : MonoBehaviour
     #region Money
     public void UpdateMoney(float _money)
     {
-        money_txt.text = "Money: " + CalculateMoneyShortcut(_money);
+        money_txt.text = "$" + CalculateMoneyShortcut(_money);
         
         if (currentQueue != null)
         {
@@ -66,6 +69,12 @@ public class UIManager : MonoBehaviour
         {
             UpdateScannerUpgradePanel(scannerUpgradePanel, currentScanner);
         }
+
+        if (currentAirplane != null)
+        {
+            UpdateAirplaneUpgradePanel(airplaneUpgradePanel, currentAirplane);
+        }
+
 
         if (CalculateNewLanePrice() < GameManager.coins)
         {
@@ -259,13 +268,69 @@ public class UIManager : MonoBehaviour
         Button btn = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
         priceTxt.text = "$" + CalculateMoneyShortcut(price);
         btn.onClick.RemoveAllListeners();
-        btn.onClick.AddListener(() => { currentScanner.Upgrade(); UpdateScannerUpgradePanel(panel, scanner); UpdateMoney(GameManager.coins); });
+        btn.onClick.AddListener(() => { currentScanner.Upgrade(price); UpdateScannerUpgradePanel(panel, scanner); UpdateMoney(GameManager.coins); });
         CheckButton(price, btn, scanner);
     }
 
     private void CheckButton(float price, Button btn, Scanner scanner)
     {
         if (btn.gameObject.name == "BuyButton:ScannerUpgrade" && scanner.upgradesOwned == 10)
+        {
+            btn.interactable = false;
+            btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";
+            return;
+        }
+
+        if (GameManager.coins < price)
+        {
+            btn.interactable = false;
+        }
+        else
+        {
+            btn.interactable = true;
+        }
+    }
+
+    // Airplane upgrades:
+    public void ActivateUpgradeAirplanePanel(GameObject panel, Airplane airplane)
+    {
+        UpdateAirplaneUpgradePanel(panel, airplane);
+        panel.SetActive(true);
+        DeavtivateTriggers();
+    }
+
+    public void UpdateAirplaneUpgradePanel(GameObject panel, Airplane airplane)
+    {
+        currentAirplane = airplane;
+        TMP_Text lengthPriceTxt = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        TMP_Text classPriceTxt = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetComponent<TMP_Text>();
+        float lengthPrice = Constants.AIRPLANE_LENGTH_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, airplane.lengthOwned);
+        float classPrice = Constants.AIRPLANE_CLASS_UPGRADE_BASE_COST * Mathf.Pow(Constants.MULTIPLIER, airplane.classOwned);
+
+        lengthPriceTxt.text = "$" + CalculateMoneyShortcut(lengthPrice);
+        classPriceTxt.text = "$" + CalculateMoneyShortcut(classPrice);
+
+        Button lengthBtn = panel.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
+        Button classBtn = panel.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<Button>();
+
+        lengthBtn.onClick.RemoveAllListeners();
+        lengthBtn.onClick.AddListener(() => { currentAirplane.Upgrade(0, lengthPrice); UpdateAirplaneUpgradePanel(panel, airplane); UpdateMoney(GameManager.coins); });
+        CheckButton(lengthPrice, lengthBtn, airplane);
+
+        classBtn.onClick.RemoveAllListeners();
+        classBtn.onClick.AddListener(() => { currentAirplane.Upgrade(1, classPrice); UpdateAirplaneUpgradePanel(panel, airplane); UpdateMoney(GameManager.coins); });
+        CheckButton(classPrice, classBtn, airplane);
+    }
+
+    private void CheckButton(float price, Button btn, Airplane airplane)
+    {
+        if (btn.gameObject.name == "BuyButton:FlightLevel" && airplane.lengthOwned == 7)
+        {
+            btn.interactable = false;
+            btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";
+            return;
+        }
+        else if (btn.gameObject.name == "BuyButton:FlightClass" && airplane.classOwned == 3)
         {
             btn.interactable = false;
             btn.transform.GetChild(0).GetComponent<TMP_Text>().text = "Max Level";
@@ -327,10 +392,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetLaneText(int queueCount)
+    {
+        queueCountText.text = "Lanes: " + queueCount;
+    }
+
     #endregion
 
     #region Duty-Free
-    
+
     public bool BuyDutyFree(int pos, int queueId)
     {
         if (GameManager.coins > Constants.DUTY_FREE_SHOP_PRICE)

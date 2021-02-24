@@ -11,5 +11,6 @@ public class QueueCount : MonoBehaviour
     {
         queueCount++;
         UIManager.Instance.ResizeScrollbar(queueCount);
+        UIManager.Instance.SetLaneText(queueCount);
     }
 }

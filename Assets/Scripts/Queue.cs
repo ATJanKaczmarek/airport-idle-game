@@ -41,8 +41,10 @@ public class Queue : MonoBehaviour
 
     private bool HP_running = false;
 
-    private Constants.FlightLevel _flightLevel = Constants.FlightLevel.SIGHTSEEING_FLIGHT;
+    private Constants.FlightLevel _flightLevel;
     private Constants.FlightClass _flightClass;
+
+    public Airplane airplane;
 
     #endregion
 
@@ -51,6 +53,7 @@ public class Queue : MonoBehaviour
     {
         _spawner = transform.GetChild(0).GetComponent<PersonSpawner>();
         _timer = transform.GetChild(1).gameObject;
+        airplane = transform.GetChild(7).GetChild(0).GetComponent<Airplane>();
 
         _dutyFree1 = transform.GetChild(2).Find("DutyFree1").gameObject;
         _dutyFree2 = transform.GetChild(2).Find("DutyFree2").gameObject;
@@ -147,9 +150,12 @@ public class Queue : MonoBehaviour
         Person p = _persons[0].GetComponent<Person>();
         yield return new WaitForSeconds(_waitingDuration);
         p.MoveTo(vectors[0] + new Vector3(1, 0) * 18.2f); // Sends person to Bodyscanner
+        p.MoveTo(vectors[0] + new Vector3(1, 0) * 36.39f); // Sends person to Airplane
         if (p != null)
         {
             p.SetHappiness(HappinessState.Happy);
+            _flightLevel = (Constants.FlightLevel)airplane.lengthOwned;
+            _flightClass = (Constants.FlightClass)airplane.classOwned;
             GameManager.Instance.GainMoney(_flightLevel, _flightClass, p.transform.position);
             RemovePerson(p, false);
         }

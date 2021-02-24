@@ -46,14 +46,14 @@ public static class Constants
     public const float QUEUE_SPAWN_UPGRADE_BASE_COST = 100.0f;
 
     // Payments for different airplane levels
-    public const float PAYMENT_SIGHTSEEING_FLIGHT = 20.0f;
-    public const float PAYMENT_SHORT_HAUL_FLIGHT = 50.0f;
-    public const float PAYMENT_BETTER_SHORT_HAUL_FLIGHT = 100.0f;
-    public const float PAYMENT_MEDIUM_HAUL_FLIGHT = 500.0f;
-    public const float PAYMENT_BETTER_MEDIUM_HAUL_FLIGHT = 1000.0f;
-    public const float PAYMENT_LONG_HAUL_FLIGHT = 2500.0f;
-    public const float PAYMENT_BETTER_LONG_HAUL_FLIGHT = 4000.0f;
-    public const float PAYMENT_AROUND_THE_WORLD_FLIGHT = 10000.0f;
+    public const float PAYMENT_SIGHTSEEING_FLIGHT = 60.0f;
+    public const float PAYMENT_SHORT_HAUL_FLIGHT = 120.0f;
+    public const float PAYMENT_BETTER_SHORT_HAUL_FLIGHT = 500.0f;
+    public const float PAYMENT_MEDIUM_HAUL_FLIGHT = 1000.0f;
+    public const float PAYMENT_BETTER_MEDIUM_HAUL_FLIGHT = 5000.0f;
+    public const float PAYMENT_LONG_HAUL_FLIGHT = 10000.0f;
+    public const float PAYMENT_BETTER_LONG_HAUL_FLIGHT = 15000.0f;
+    public const float PAYMENT_AROUND_THE_WORLD_FLIGHT = 20000.0f;
 
     // Multipliers for different airplane levels
     public const float ECONOMY_CLASS_MULTIPLIER = 1.09f;
@@ -63,5 +63,9 @@ public static class Constants
 
     // Base cost for the scanner upgrade
     public const float SCANNER_UPGRADE_BASE_COST = 1000.0f;
+
+    // Base cost for airplane upgrades
+    public const float AIRPLANE_LENGTH_UPGRADE_BASE_COST = 500.0f;
+    public const float AIRPLANE_CLASS_UPGRADE_BASE_COST = 2000.0f;
 }
 
