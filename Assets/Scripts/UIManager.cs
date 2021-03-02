@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    // public
     public TMP_Text money_txt;
     public TMP_Text laneAddingText;
     public TMP_Text queueCountText;
@@ -36,11 +37,6 @@ public class UIManager : MonoBehaviour
     public GameObject dutyFreeShopUpgradePanel;
     public GameObject airplaneUpgradePanel;
     public GameObject scannerEventPanel;
-    [HideInInspector] public Queue currentQueue;
-    [HideInInspector] public Scanner currentScanner;
-    [HideInInspector] public Airplane currentAirplane;
-    private DutyFreeShop currentShop;
-    
 
     public bool hasActiveUIPanel = false;
 
@@ -49,10 +45,19 @@ public class UIManager : MonoBehaviour
     public Image suitcaseVisual;
     private Constants.ScannerRewards rewardType;
 
+    // public hidden
+    [HideInInspector] public Queue currentQueue;
+    [HideInInspector] public Scanner currentScanner;
+    [HideInInspector] public Airplane currentAirplane;
 
+    // private
+    private DutyFreeShop currentShop;
+    private Scrollbar dutyFreeSwitch;
+    
     private void Start()
     {
         UpdateMoney(GameManager.coins);
+        dutyFreeSwitch = dutyFreeShopUpgradePanel.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Scrollbar>();
     }
 
     #region Money
@@ -352,8 +357,8 @@ public class UIManager : MonoBehaviour
     #region Scrollbar
     public void ScrollbarChanged(float value)
     {
-        Vector3 minPos = new Vector3(0, 0, -10);
-        Vector3 maxPos = new Vector3(0, ((QueueCount.queueCount - 1) * -3f) - 2.25f, -10);
+        Vector3 minPos = new Vector3(Camera.main.transform.position.x, 0, -10);
+        Vector3 maxPos = new Vector3(Camera.main.transform.position.x, ((QueueCount.queueCount - 1) * -3f) - 2.25f, -10);
         Camera.main.transform.position = Vector3.Lerp(minPos, maxPos, value);
     }
 
@@ -424,9 +429,9 @@ public class UIManager : MonoBehaviour
 
         DeavtivateTriggers();
 
-        Scrollbar modeSwitch = dutyFreeShopUpgradePanel.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Scrollbar>();
+        //dutyFreeSwitch = dutyFreeShopUpgradePanel.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Scrollbar>();
         if (currentShop.makesMoney == true)
-            modeSwitch.value = 1f;
+            dutyFreeSwitch.value = 1f;
         else
             UpdateShopMode();
     }
@@ -439,14 +444,16 @@ public class UIManager : MonoBehaviour
     private void UpdateShopMode()
     {
         if (currentShop.makesMoney == true)
+        {
             GetCurrentModeText().text = "MONEY";
+            dutyFreeSwitch.value = 1f;
+        }
         else
+        {
             GetCurrentModeText().text = "HAPPINESS";
+            dutyFreeSwitch.value = 0f;
+        }
     }
-
-    #endregion
-
-    #region Duty Free Switch
 
     public void SwitchImage(float value)
     {
